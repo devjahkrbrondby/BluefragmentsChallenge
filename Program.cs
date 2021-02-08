@@ -45,7 +45,7 @@ namespace ChallengeBluefragments
             static string GetMaxandMin(int[] array)
             {
 
-                // jeg initialiserer de to variable til det første element i array'et
+                // Jeg initialiserer de to variable til det første element i array'et
                 int max = array[0];
                 int min = array[0];
 
@@ -191,7 +191,7 @@ namespace ChallengeBluefragments
             // IsIsogram("Consecutive") ➞ false
 
 
-            string Isogram1 = new string("AlgorismM");
+            string Isogram1 = new string("Algorism");
             string Isogram2 = new string("PasSword");
             string Isogram3 = new string("Consecutive");
 
@@ -216,12 +216,11 @@ namespace ChallengeBluefragments
                 string lowered = str.ToLower();
 
 
-                // Jeg trækker 1 fra lowered.length, da jeg ikke skal teste sidste karakter, da dette
-                // jo er gjort i foregående loop.
+                
                 for (int i = 0; i < lowered.Length - 1; i++)
                 {
 
-                    // Jeg konverterer templetter til en tekststreng, da jeg vil sammenlinge to strings,
+                    // Jeg konverterer templetter til en tekststreng, da jeg vil sammenligne to strings,
                     // og ikke kan sammenligne char med string
                     string tempLetter = lowered[i].ToString();
 
@@ -232,6 +231,7 @@ namespace ChallengeBluefragments
                         if (tempLetter == lowered[j].ToString())
                         {
                             isogram = false;
+                            break;
                         }
                     }
                 }
@@ -331,6 +331,7 @@ namespace ChallengeBluefragments
                 string lettersOnly = Regex.Replace(lower, "[^a-z]", "");
 
                 StringBuilder sb = new StringBuilder();
+
                 sb.Append("'");
 
                 // så looper jeg igennem tekststrengen lettersOnly
@@ -406,6 +407,7 @@ namespace ChallengeBluefragments
                     {
                         string temp = str[i].ToString();
 
+                        // alle karakterer skjules på nær de sidste fire 
                         if (i + 4 >= str.Length)
                         {
                             sb.Append(temp.ToString());
@@ -450,6 +452,7 @@ namespace ChallengeBluefragments
             int tal01 = int.Parse(Console.ReadLine());
             Console.WriteLine(primeFactorFinder(tal01));
             Console.WriteLine();
+
             static string primeFactorFinder(int n)
             {
                 StringBuilder sb = new StringBuilder();
@@ -458,7 +461,7 @@ namespace ChallengeBluefragments
                 {
                     // Initialiserer tællevariabel x 
                     int x = 0;
-                    // så laver jeg et while loop, for at se hvor mange gange det pågældende tal er primfaktor
+                    // så laver jeg et while loop, for at tælle hvor mange gange det pågældende tal er primfaktor
                     while (n % i == 0)
                     {
                         n /= i;
@@ -509,13 +512,12 @@ namespace ChallengeBluefragments
             Console.WriteLine("Indtast et positivt tal mellem 2 og 97:");
             int tal = Int32.Parse(Console.ReadLine());
 
-            //Console.WriteLine("Er det et primtal: " + IsPrime(tal));
             Console.WriteLine();
 
             int[] primes = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 };
 
             Console.WriteLine("Er det et primtal: " + IsPrime(primes, tal));
-
+            Console.WriteLine();
 
             static string IsPrime(int[] primes, int tal)
             {
@@ -552,10 +554,10 @@ namespace ChallengeBluefragments
             // Potatoes("potatopotato") ➞ 2
             // Potatoes("potatoapple") ➞ 1
 
-            string potato1 = "potato";
+            string potato1 = "potatopotatopotatopotato";
             string potato2 = "potatopotato";
-            string potato3 = "potatopotatopotatopotato";
-            string potato4 = "potatoapple";
+            string potato3 = "potatoapple";
+            string potato4 = "potato";
 
 
             Console.WriteLine("// ------------------    Challenge 204  --------------------- //");
@@ -570,7 +572,7 @@ namespace ChallengeBluefragments
             static int Potatoes(string str)
             {
                
-
+                // splitter strengen op i et array og trækker en fra
                 int antalpotato = str.Split("potato").Length - 1;
 
                 return antalpotato;
@@ -664,7 +666,7 @@ namespace ChallengeBluefragments
                 for (int i = 0; i < numbers.Length; i++)
                 {
                     sum = sum + numbers[i];
-                    //int ASCIINumber = sum;
+                    
                     sb.Append((char)sum);
                 }
 
@@ -697,318 +699,3 @@ namespace ChallengeBluefragments
 
 
 
-
-
-
-
-//        //// ---------------------------------------------- Methods ------------------------------------------------------ //
-
-
-
-//        //// ------------------------------------------    Challenge 101  ----------------------------------------------- //
-
-//        //#region 
-
-//        ////  Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.
-
-//        //// Examples:
-
-//        //// FindMinMax([1, 2, 3, 4, 5]) ➞ [1, 5]
-//        //// FindMinMax([2334454, 5]) ➞ [5, 2334454]
-//        //// FindMinMax([1]) ➞ [1, 1]
-
-//        //static string GetMaxandMin(int[] array)
-//        //{
-
-//        //    // jeg initialiserer de to variable til det første element i array'et i tilfælde af, da jeg ikke kender værdierne i array'et
-//        //    int max = array[0];
-//        //    int min = array[0];
-
-//        //    // Jeg looper igennem array'et og finder min og max
-//        //    foreach (var item in array)
-//        //    {
-//        //        if (item > max)
-//        //        {
-//        //            max = item;
-//        //        }
-//        //        if (item < min)
-//        //        {
-//        //            min = item;
-//        //        }
-
-
-//        //    }
-//        //    return "[" + min + "," + max + "]";
-//        //    //Console.WriteLine($"[{min},{max}]");
-//        //    //Console.WriteLine($"[" + min + "," + max + "]");
-//        //}
-
-//        //#endregion
-//        //// ------------------------------------------    Challenge 102  ----------------------------------------------- //
-
-//        //#region
-//        //static string Navnebyt(string navn)
-//        //{
-
-//        //    // Jeg splitter tekststrengen ved mellemrum og tilgår derefter elementerne i array'et
-//        //    string[] split = navn.Split(" ");
-
-//        //    //StringBuilder sb = new StringBuilder();
-
-//        //    //int antalelementer = (split.Length - 1);
-
-//        //    //string[] omvendt = split.Reverse(split);
-
-//        //    //return omvendt;
-
-//        //    //for (int i = antalelementer; i >= 0; i--)
-//        //    //{
-
-
-//        //    //    sb.Append(split[i]);
-
-//        //    //    if (i > 0)
-//        //    //    {
-//        //    //        sb.Append(" ");
-//        //    //    }
-//        //    //}
-//        //    return (split[1] + " " + split[0]);
-//        //   // return sb.ToString();
-//        //    //Console.WriteLine(omvendt[1] + " " + omvendt[0]);
-
-
-//        //}
-//        //#endregion
-//        //// ------------------------------------------    Challenge 103  ----------------------------------------------- //
-
-//        //static bool KunStoreKunSmåBogstaver(string ord)
-//        //{
-//        //    // Jeg tester om strengen kun indeholder store bogstaver
-//        //    if /*(ord.Any(char.IsUpper) &&*/ (!ord.Any(char.IsLower))
-//        //    {
-//        //        return true;
-//        //    }
-
-//        //    // Jeg tester om strengen kun indeholder små bogstaver
-//        //    else if (!ord.Any(char.IsUpper) /*&& (ord.Any(char.IsLower)*/)
-//        //    {
-//        //        return true;
-//        //    }
-
-//        //    else
-//        //    {
-//        //        return false;
-//        //    }
-
-//        //}
-//        //// ------------------------------------------    Challenge 104  ----------------------------------------------- //
-
-
-//        //public static bool is_isogram(string str)
-//        //{
-//        //    string tempLetter = "";
-
-//        //    bool isogram = true;
-
-//        //    // jeg laver alle bogstaver om til små bogstaver for at sikre at der ikke skelnes mellem store og små bogstaver
-//        //    string lowered = str.ToLower();
-
-
-
-//        //    // Jeg trækker 1 fra lowered.length, da mit array (lowered[i]) er 0-indekseret
-//        //    // I første loop fastsætter jeg tempLetter og looper igennem hele tekststrengen
-//        //    for (int i = 0; i < lowered.Length - 1; i++)
-//        //    {
-//        //        // Jeg konverterer templetter til en tekststreng, da jeg ikke kan sammenligne char med string
-//        //        tempLetter = lowered[i].ToString();
-//        //        //Console.WriteLine(lowered[i]);
-
-//        //        // jeg lægger 1 til i for at sikre, at jeg ikke tjekker bogstavet mod sig selv, men i stedet det eftefølgende bogstav
-//        //        for (int j = i + 1; j < lowered.Length; j++)
-//        //        {
-//        //            //Console.WriteLine(lowered[j]);
-
-//        //            if (tempLetter == lowered[j].ToString())
-//        //            {
-//        //                isogram = false;
-//        //            }
-//        //        }
-//        //    }
-
-//        //    return isogram;
-//        //}
-
-
-//        //// ------------------------------------------    Challenge 105  ----------------------------------------------- //
-
-//        //static string ReturnMonth(int number)
-//        //{
-
-//        //    // metoden "GetMonthName" returner det fulde navn for det tal, der leveres
-//        //    string Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(number);
-
-//        //    return Month;
-//        //}
-
-
-
-
-
-//        //// ------------------------------------------    Challenge 106  ----------------------------------------------- //
-
-//        //// En konstant anvendes til at udregne positionerne; a har ASCII-værdien 97 
-//        //private static readonly int ASCII_A = 97;
-//        //public static string AlphabetIndex(string str)
-//        //{
-//        //    // laver alle bogstaver om til små bogstaver
-//        //    string lower = str.ToLower();
-//        //    // jeg fjerner alt, der ikke er bogstaver
-//        //    string lettersOnly = Regex.Replace(lower, "[^a-zA-Z]", "");
-//        //    StringBuilder sb = new StringBuilder();
-
-//        //    // så looper jeg igennem tekststrengen (str)
-//        //    for (int i = 0; i < lettersOnly.Length; i++)
-//        //    {
-
-
-//        //        //Console.WriteLine("Letternumber = {0}", (int)lettersOnly[i] - ASCII_A + 1);
-//        //        // Jeg konverterer char til int og får herved ASCII-værdien og ved at - 97 og + 1, så jeg får index-tallet for det pågældende bogstav.
-//        //        sb.Append((int)lettersOnly[i] - ASCII_A + 1);
-
-//        //        // hvis det ikke er sidste bogstav i tekststrengen, så tilføjes mellemrum.
-//        //        if (i < lettersOnly.Length - 1)
-
-//        //            sb.Append(" ");
-
-
-
-
-//        //    }
-//        //    return sb.ToString();
-
-//        //}
-
-
-
-
-
-//        //// ------------------------------------------------ Challenge 201 ------------------------------------------------------------//
-//        //static string Maskify(string str)
-//        //{
-
-//        //    //string Textstring = str;
-//        //    StringBuilder sb = new StringBuilder();
-
-
-
-//        //    // I tilfælde af at tekststrengen er mere end 4 karakterer
-//        //    if (str.Length > 4)
-//        //    {
-
-//        //        for (int i = 0; i < str.Length; i++)
-//        //        {
-//        //            string temp = str[i].ToString();
-
-//        //            if (i + 4 >= str.Length)
-//        //            {
-//        //                sb.Append(temp.ToString());
-//        //            }
-//        //            else
-//        //            {
-//        //                sb.Append("#");
-//        //            }
-//        //        }
-
-
-//        //    }
-//        //    else
-//        //    {
-//        //        sb.Append(str);
-//        //    }
-
-//        //    return sb.ToString();
-//        //}
-
-
-
-
-//        //// ----------------------------------------------- Challenge 203 -----------------------------------------------//
-
-
-
-//        //static string IsPrime(int number)
-//        //{
-
-//        //    bool isPrime = true;
-
-//        //    StringBuilder sb = new StringBuilder();
-
-
-//        //    // -------------------
-//        //    // jeg dividerer med 2, da et tal, der er større end
-//        //    // halvdelen af numemret aldrig kan gå op i nummeret.
-//        //    // 6 kan ikke gå op i 10 eller 14 ikke går op i 27
-//        //    // loopet starter fra to, da alle tal kan divideres med 1
-//        //    for (int i = 2; i <= number / 2; i++)
-//        //    {
-//        //        // nedenfor udregnes om tallet number kan divideres med i/ om i-tallet går op i number-tallet
-//        //        // eksempelvis to går op i 10, derfor er der ikke nogen "rest" tilbage
-//        //        // hvor imod to går op i 11 fem gange, men der er et 1-tal i rest, og er derfor 
-//        //        // ikke i lig med 0
-//        //        if (number % i == 0)
-//        //        {
-//        //            isPrime = false;
-//        //            sb.Append("No");
-//        //            //isPrime = false;
-//        //            //Console.WriteLine("Number {0} is not a prime number.", number);
-//        //            break;
-//        //        }
-
-
-
-//        //    }
-//        //    if (isPrime)
-//        //    {
-//        //        sb.Append("Yes");
-//        //    }
-
-//        //    return sb.ToString();
-
-
-//        //}
-
-
-//        //// ---------------------------------------------- Challenge 204 ---------------------------------------------- //
-
-
-//        //static int Potatoes(string str)
-//        //{
-
-//        //    int antalpotato = str.Split("potato").Length - 1;
-
-//        //    //string tekststreng = "potato";
-//        //    //int count = tekststreng.Length - tekststreng.Replace("potato", "").Length;
-
-//        //    //string resultat = antalpotato.ToString() + " -- " + count.ToString();
-
-//        //    //string searchterm = "potato";
-
-//        //    //string source = str;
-
-//        //    //var matchQuery = from word in source
-//        //    //                 where word.ToString() == searchterm.ToString()
-//        //    //                 select word;
-
-//        //    //// Count the matches, which executes the query.  
-//        //    //int wordCount = matchQuery.Count();
-//        //    //Console.WriteLine("{0} occurrences(s) of the search term \"{1}\" were found.-------- string:{2}", wordCount, searchterm, source);
-
-
-//        //    return antalpotato;
-//        //}
-
-
-
-
-
-//}
